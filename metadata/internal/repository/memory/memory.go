@@ -4,9 +4,8 @@ import (
 	"context"
 	"sync"
 
-	"github.com/aburifat/microservice-with-go/metadata/pkg/model"
-
 	"github.com/aburifat/microservice-with-go/metadata/internal/repository"
+	"github.com/aburifat/microservice-with-go/metadata/pkg/model"
 )
 
 type Repository struct {
