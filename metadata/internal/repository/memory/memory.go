@@ -29,9 +29,9 @@ func (r *Repository) Get(_ context.Context, id string) (*model.Metadata, error) 
 	return nil, repository.ErrNotFound
 }
 
-func (r *Repository) Put(_ context.Context, id string, metadata *model.Metadata) error {
+func (r *Repository) Put(_ context.Context, metadata *model.Metadata) error {
 	r.Lock()
 	defer r.Unlock()
-	r.data[id] = metadata
+	r.data[metadata.ID] = metadata
 	return nil
 }

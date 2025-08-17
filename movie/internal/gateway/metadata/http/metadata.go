@@ -46,17 +46,17 @@ func (g *Gateway) Get(ctx context.Context, id string) (*model.Metadata, error) {
 	return v, nil
 }
 
-func (g *Gateway) Put(ctx context.Context, id string, title string, description string, director string) error {
+func (g *Gateway) Put(ctx context.Context, metadata *model.Metadata) error {
 	req, err := http.NewRequest(http.MethodPut, g.addr+"/metadata/put", nil)
 	if err != nil {
 		return err
 	}
 	req = req.WithContext(ctx)
 	values := req.URL.Query()
-	values.Add("id", id)
-	values.Add("title", title)
-	values.Add("description", description)
-	values.Add("director", director)
+	values.Add("id", metadata.ID)
+	values.Add("title", metadata.Title)
+	values.Add("description", metadata.Description)
+	values.Add("director", metadata.Director)
 	req.URL.RawQuery = values.Encode()
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {

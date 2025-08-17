@@ -47,13 +47,12 @@ func (h *Handler) PutMetadata(w http.ResponseWriter, req *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	id := req.FormValue("id")
-	if id == "" {
+	if metadata.ID == "" {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 	ctx := req.Context()
-	if err := h.controller.Put(ctx, id, &metadata); err != nil {
+	if err := h.controller.Put(ctx, &metadata); err != nil {
 		log.Printf("Controller put error: %v\n", err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return

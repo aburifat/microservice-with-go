@@ -4,5 +4,5 @@ type Metadata struct {
 	ID          string `json:"id"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
-	Directory   string `json:"directory"`
+	Director    string `json:"director"`
 }

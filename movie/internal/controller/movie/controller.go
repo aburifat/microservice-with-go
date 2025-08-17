@@ -19,7 +19,7 @@ type ratingGateway interface {
 
 type metadataGateway interface {
 	Get(ctx context.Context, id string) (*metadataModel.Metadata, error)
-	Put(ctx context.Context, id string, title string, description string, director string) error
+	Put(ctx context.Context, metadata *metadataModel.Metadata) error
 }
 
 type Controller struct {
